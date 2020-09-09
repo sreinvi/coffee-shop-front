@@ -1,3 +1,9 @@
 .navbar-color {
   background:#46211A;
 }
+
+.app-title {
+  font-weight: bold;
+  color: antiquewhite;
+  font-size: larger;
+}
