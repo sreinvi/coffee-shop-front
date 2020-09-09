@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {ItemService} from '../services/item.service';
+import {ItemsResponse} from '../dto/ItemsResponse';
 
 @Component({
   selector: 'app-items',
@@ -7,10 +9,13 @@ import {Router} from '@angular/router';
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  items: ItemsResponse;
+  constructor(private router: Router, private itemService: ItemService) { }
 
   ngOnInit(): void {
+    // this.itemService.getItems().subscribe( (data: ItemsResponse) => {
+    //   this.items = data;
+    // });
   }
 
 }
