@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ItemsResponse} from '../dto/ItemsResponse';
+import {ItemsResponse} from '../dto/responses/items-response';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
@@ -12,7 +12,7 @@ export class ItemService {
 
   getItems(): Observable<ItemsResponse>
   {
-    const fullItemsUrl = 'test_url';
+    const fullItemsUrl = 'http://localhost:8080/api/item/all';
     // let full_feed_url :string = this.appConfig.api_url + this.feed_url;
     return this.httpClient.get<ItemsResponse>(fullItemsUrl );
   }

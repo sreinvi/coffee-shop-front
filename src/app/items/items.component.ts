@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {ItemService} from '../services/item.service';
-import {ItemsResponse} from '../dto/ItemsResponse';
+import {ItemsResponse} from '../dto/responses/items-response';
 
 @Component({
   selector: 'app-items',
@@ -10,12 +10,14 @@ import {ItemsResponse} from '../dto/ItemsResponse';
 })
 export class ItemsComponent implements OnInit {
   items: ItemsResponse;
-  constructor(private router: Router, private itemService: ItemService) { }
+  constructor(private router: Router, private itemService: ItemService) {
+
+  }
 
   ngOnInit(): void {
-    // this.itemService.getItems().subscribe( (data: ItemsResponse) => {
-    //   this.items = data;
-    // });
+    this.itemService.getItems().subscribe( (data: ItemsResponse) => {
+      this.items = data;
+    });
   }
 
 }
