@@ -5,15 +5,18 @@
         {{item.item}}
       </div>
       <div class="card-body card col-md-12">
-        <p>Image</p>
-        <p class="card-text"><b>Price:</b> {{ item.price / 100 }}</p>
-
         <div class="row">
+          <div class="col"><img class="center" [src]="item.image_url" width="25%"></div>
+          <div class="col"><p class="card-text"><b>Price:</b> {{ (item.price / 100) | number:'1.2-2'}}</p></div>
+        </div>
+
+        <div class="row" style="padding-top:5px;">
           <div class="col-md-6"><a href="#" class="btn btn-primary col-md-12">Edit</a></div>
           <div class="col-md-6"><a href="#" class="btn btn-danger col-md-12">Delete</a></div>
         </div>
 
       </div>
+
     </div>
   </div>
 </div>

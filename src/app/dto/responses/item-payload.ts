@@ -3,4 +3,5 @@ export class ItemPayload{
   item: string;
   price: number;
   active: boolean;
+  image_url: string;
 }
