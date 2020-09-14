@@ -4,6 +4,14 @@
   padding-bottom: 15px;
 }
 
+.products-page-title{
+  background-color: antiquewhite;
+  margin-top:5px;
+}
+
+.button-add-item{
+  margin-top:5px;
+}
 .product-title {
   color: #693D3D;
   font-weight: bold;
