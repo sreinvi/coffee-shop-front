@@ -15,10 +15,20 @@ export class ItemsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadItems();
+  }
+
+  loadItems(){
     this.itemService.getItems().subscribe( (data: ItemsResponse) => {
-      console.log(data);
       this.items = data;
     });
   }
 
+  deleteItem(item_id: number) {
+    this.itemService.deleteItem(item_id).subscribe( (data:any) =>{
+      this.loadItems();
+    },(err:any)=>{
+      alert("Something went wrong")
+    });
+  }
 }
