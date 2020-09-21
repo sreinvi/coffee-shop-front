@@ -17,6 +17,12 @@ export class ItemService {
     return this.httpClient.get<ItemsResponse>(fullItemsUrl );
   }
 
+  getItem(item_id:number)
+  {
+    const fullItemsUrl = 'http://localhost:8080/api/item/'+item_id;
+    return this.httpClient.get<ItemPayload>(fullItemsUrl);
+  }
+
   newItem(itemPayload:ItemPayload)
   {
     const fullItemsUrl = 'http://localhost:8080/api/item/create';

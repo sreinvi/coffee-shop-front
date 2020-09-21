@@ -4,6 +4,7 @@ import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ItemPayload} from '../../dto/responses/item-payload';
 import {ItemService} from '../../services/item.service';
+import {ItemsResponse} from '../../dto/responses/items-response';
 
 @Component({
   selector: 'item-modal-content',
@@ -32,15 +33,16 @@ export class ItemModalContent {
     }
   }
 
-  // loadData(tweetid:number)
-  // {
-  //   this.tweetService.getTweet(tweetid).subscribe( (data:SingleTweet) =>{
-  //     this.tweetPayload.tweet_id = data.data.tweet_id;
-  //     this.addTweetForm.controls.tweet.setValue(data.data.tweet_message);
-  //   },(error:any)=>{
-  //     alert(error);
-  //   });
-  // }
+  loadData(id:number)
+  {
+    this.itemService.getItem(id).subscribe( (data:ItemPayload) =>{
+      this.itemPayload.id = data.id;
+      this.saveItemForm.controls.item.setValue(data.item);
+      this.saveItemForm.controls.price.setValue(data.price);
+    },(error:any)=>{
+      alert(error);
+    });
+  }
 
   update()
   {
@@ -59,7 +61,7 @@ export class ItemModalContent {
     }
     this.itemPayload.item = this.saveItemForm.get('item').value;
     this.itemPayload.price = (this.saveItemForm.get('price').value * 100);
-    this.itemService.newItem(this.itemPayload).subscribe( data=>{
+    this.itemService.newItem(this.itemPayload).subscribe( ()=>{
       window.location.reload();
     }, error => {
       alert(error);
@@ -76,7 +78,7 @@ export class ItemModalComponent {
   constructor(private modalService: NgbModal) {}
 
   open() {
-    const modalRef = this.modalService.open(ItemModalContent);
+    this.modalService.open(ItemModalContent);
   }
 
 
