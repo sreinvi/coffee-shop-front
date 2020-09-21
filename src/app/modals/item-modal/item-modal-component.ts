@@ -62,7 +62,7 @@ export class ItemModalContent {
 
 @Component({
   selector: 'item-modal',
-  templateUrl: './tweet-modal-component.html'
+  templateUrl: './item-modal-component.html'
 })
 export class ItemModalComponent {
   constructor(private modalService: NgbModal) {}
