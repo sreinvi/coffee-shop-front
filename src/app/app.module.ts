@@ -7,6 +7,7 @@ import {RouterModule} from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ItemModalComponent, ItemModalContent} from './modals/item-modal/item-modal-component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {ItemModalComponent, ItemModalContent} from './modals/item-modal/item-mod
     RouterModule.forRoot([
       {path: 'items', component: ItemsComponent},
     ]),
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

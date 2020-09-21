@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {FormControl, FormGroup} from '@angular/forms';
+import {ItemPayload} from '../../dto/responses/item-payload';
+import {ItemService} from '../../services/item.service';
 
 @Component({
   selector: 'item-modal-content',
@@ -8,21 +11,25 @@ import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ItemModalContent {
 
-  // tweetPayload: TweetPayload;
-  // addTweetForm: FormGroup;
-  // tweet = new FormControl('');
+  itemPayload: ItemPayload;
+  saveItemForm: FormGroup;
+  item = new FormControl('');
+  price = new FormControl('');
 
-  constructor(public activeModal: NgbActiveModal, private router: Router)
+  constructor(public activeModal: NgbActiveModal, private router: Router, private itemService: ItemService)
   {
-    // this.addTweetForm = new FormGroup({
-    //   tweet: this.tweet,
-    // });
+    this.saveItemForm = new FormGroup({
+      item: this.item,
+      price: this.price
+    });
 
-    // this.tweetPayload = {
-    //   tweet_id: null,
-    //   tweet_message: '',
-    //   tweet_user_id: null
-    // }
+    this.itemPayload = {
+      id: null,
+      item: '',
+      price: null,
+      active:null,
+      image_url:null
+    }
   }
 
   // loadData(tweetid:number)
@@ -46,16 +53,17 @@ export class ItemModalContent {
   }
 
   save(){
-    // if(this.tweetPayload.tweet_id > 0){
-    //   this.update();
-    //   return;
-    // }
-    // this.tweetPayload.tweet_message = this.addTweetForm.get('tweet').value;
-    // this.tweetService.newTweet(this.tweetPayload).subscribe( data=>{
-    //   window.location.reload();
-    // }, error => {
-    //   alert(error);
-    // });
+    if(this.itemPayload.id > 0){
+      this.update();
+      return;
+    }
+    this.itemPayload.item = this.saveItemForm.get('item').value;
+    this.itemPayload.price = (this.saveItemForm.get('price').value * 100);
+    this.itemService.newItem(this.itemPayload).subscribe( data=>{
+      window.location.reload();
+    }, error => {
+      alert(error);
+    });
   }
 
 }
