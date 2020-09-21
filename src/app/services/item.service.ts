@@ -3,6 +3,7 @@ import {ItemsResponse} from '../dto/responses/items-response';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {ItemPayload} from '../dto/responses/item-payload';
+import {PageableItemsResponse} from '../dto/responses/pageable-items-response';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,10 @@ export class ItemService {
 
   constructor( private httpClient: HttpClient) { }
 
-  getItems(): Observable<ItemsResponse>
+  getItems(): Observable<PageableItemsResponse>
   {
     const fullItemsUrl = 'http://localhost:8080/api/item/all';
-    return this.httpClient.get<ItemsResponse>(fullItemsUrl );
+    return this.httpClient.get<PageableItemsResponse>(fullItemsUrl );
   }
 
   getItem(item_id:number)

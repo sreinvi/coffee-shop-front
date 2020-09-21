@@ -4,6 +4,8 @@ import {ItemService} from '../services/item.service';
 import {ItemsResponse} from '../dto/responses/items-response';
 import {ItemModalContent} from '../modals/item-modal/item-modal-component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {PageableItemsResponse} from '../dto/responses/pageable-items-response';
+import {ItemPayload} from '../dto/responses/item-payload';
 
 @Component({
   selector: 'app-items',
@@ -11,7 +13,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent implements OnInit {
-  items: ItemsResponse;
+  items: Array<ItemPayload>;
   constructor(private router: Router, private itemService: ItemService, private modalService:NgbModal) {
 
   }
@@ -21,8 +23,8 @@ export class ItemsComponent implements OnInit {
   }
 
   loadItems(){
-    this.itemService.getItems().subscribe( (data: ItemsResponse) => {
-      this.items = data;
+    this.itemService.getItems().subscribe( (response: PageableItemsResponse) => {
+      this.items = response.data.content;
     });
   }
 
