@@ -4,7 +4,6 @@ import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ItemPayload} from '../../dto/responses/item-payload';
 import {ItemService} from '../../services/item.service';
-import {ItemsResponse} from '../../dto/responses/items-response';
 import {ItemResponse} from '../../dto/responses/ItemResponse';
 
 @Component({
@@ -50,7 +49,7 @@ export class ItemModalContent {
     this.itemPayload.item = this.saveItemForm.get('item').value;
     this.itemPayload.price = this.saveItemForm.get('price').value;
     this.itemService.updateItem(this.itemPayload).subscribe( data=>{
-      window.location.reload();
+      this.activeModal.close();
     },error =>{
       alert(error);
     });
@@ -82,6 +81,4 @@ export class ItemModalComponent {
   open() {
     this.modalService.open(ItemModalContent);
   }
-
-
 }

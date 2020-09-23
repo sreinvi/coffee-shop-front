@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {ItemService} from '../services/item.service';
-import {ItemsResponse} from '../dto/responses/items-response';
 import {ItemModalContent} from '../modals/item-modal/item-modal-component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {PageableItemsResponse} from '../dto/responses/pageable-items-response';
@@ -29,8 +28,13 @@ export class ItemsComponent implements OnInit {
   }
 
   editItem(id: number) {
-    const ref = this.modalService.open(ItemModalContent)
-    ref.componentInstance.loadData(id);
+    const activeModal = this.modalService.open(ItemModalContent)
+    activeModal.componentInstance.loadData(id);
+    activeModal.result.then((response) => {
+      this.loadItems();
+    }, (reason) => {
+      alert("there was an error");
+    });
   }
 
   deleteItem(item_id: number) {
