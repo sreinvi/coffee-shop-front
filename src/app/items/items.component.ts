@@ -13,9 +13,7 @@ import {ItemPayload} from '../dto/responses/item-payload';
 })
 export class ItemsComponent implements OnInit {
   items: Array<ItemPayload>;
-  constructor(private router: Router, private itemService: ItemService, private modalService:NgbModal) {
-
-  }
+  constructor(private router: Router, private itemService: ItemService, private modalService:NgbModal) {}
 
   ngOnInit(): void {
     this.loadItems();
@@ -25,6 +23,11 @@ export class ItemsComponent implements OnInit {
     this.itemService.getItems().subscribe( (response: PageableItemsResponse) => {
       this.items = response.data.content;
     });
+  }
+
+  onFileSelected($event: Event){
+    // @ts-ignore
+    console.log($event.target.files[0]);
   }
 
   editItem(id: number) {
