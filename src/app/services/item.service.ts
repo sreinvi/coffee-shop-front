@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {ItemsResponse} from '../dto/responses/items-response';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {ItemPayload} from '../dto/responses/item-payload';
