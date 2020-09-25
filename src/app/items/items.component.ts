@@ -64,8 +64,4 @@ export class ItemsComponent implements OnInit {
     });
   }
 
-
-}
-interface HTMLInputEvent extends Event {
-  files: ;
 }
