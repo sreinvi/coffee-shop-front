@@ -10,6 +10,7 @@ import {ItemModalComponent, ItemModalContent} from './modals/item-modal/item-mod
 import {ReactiveFormsModule} from '@angular/forms';
 import {JsonAppConfigService} from './config/json-app-config.service';
 import { AppConfig } from './config/app-config';
+import { TablesComponent } from './tables/tables.component';
 
 export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
   return () => {
@@ -24,6 +25,7 @@ export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
     HeaderComponent,
     ItemModalComponent,
     ItemModalContent,
+    TablesComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +33,7 @@ export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
     NgbModule,
     RouterModule.forRoot([
       {path: 'items', component: ItemsComponent},
+      {path: 'tables', component: TablesComponent},
     ]),
     ReactiveFormsModule,
   ],

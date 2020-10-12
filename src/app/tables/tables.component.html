@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row table-page-title">
+    <div class="col-md-8"> <h1>Tables</h1></div>
+<!--    <div class="col-md-4"><item-modal></item-modal></div>-->
+  </div>
+  <div class="row">
+
+    <div class="card col-md-6 card-attributes" *ngFor="let table of tables">
+      <h1>{{ (table.table_code == null)?"N/A":table.table_code }}</h1>
+      <div class="row" style="padding-top:5px;">
+        <div class="col-md-4">
+          <button style="margin-right:5px;" class="btn btn-block btn-primary" >Order</button>
+        </div>
+        <div class="col-md-4">
+          <button style="margin-right:5px;" class="btn btn-block btn-primary" >Edit</button>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-block btn-danger" >Delete</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

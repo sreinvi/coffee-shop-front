@@ -1,5 +1,5 @@
-import {ItemPayload} from './item-payload';
+import {TablePayload} from './table-payload';
 
-export class ItemsResponse{
-  content: Array<ItemPayload>;
+export class TablesResponse{
+  content: Array<TablePayload>;
 }

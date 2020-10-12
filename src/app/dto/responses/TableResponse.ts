@@ -1,7 +1,8 @@
-import {ItemPayload} from './item-payload';
+import {TablesResponse} from './tables-response';
+import {TablePayload} from './table-payload';
 
-export class ItemResponse{
+export class TableResponse {
   success: boolean;
-  message:string;
-  data:ItemPayload
+  message: string;
+  data: Array<TablePayload>
 }

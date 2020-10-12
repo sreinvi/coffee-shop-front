@@ -1,7 +1,5 @@
-export class ItemPayload{
+export class TablePayload{
   id: number;
-  item: string;
-  price: number;
+  table_code: string;
   active: boolean;
-  image_url: string;
 }
