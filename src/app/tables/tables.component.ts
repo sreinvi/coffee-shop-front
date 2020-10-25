@@ -23,7 +23,6 @@ export class TablesComponent implements OnInit {
 
   loadTables(){
     this.tableService.getTables().subscribe( (response: TableResponse) => {
-      console.log(response.data);
       this.tables = response.data;
     });
   }
