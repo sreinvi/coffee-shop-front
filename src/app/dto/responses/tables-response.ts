@@ -1,5 +1,11 @@
 import {TablePayload} from './table-payload';
+import Table = WebAssembly.Table;
 
+// export class TablesResponse{
+//   content: Array<TablePayload>;
+// }
 export class TablesResponse{
-  content: Array<TablePayload>;
+  success: boolean;
+  message: string;
+  data:TablePayload;
 }

@@ -52,6 +52,7 @@ export class ItemsComponent implements OnInit {
     activeModal.result.then((response) => {
       this.loadItems();
     },(err:any)=>{
+      if(err === 'Cross click') return;
       alert("there was an error");
     });
   }

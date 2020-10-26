@@ -1,4 +1,3 @@
-import {TablesResponse} from './tables-response';
 import {TablePayload} from './table-payload';
 
 export class TableResponse {
