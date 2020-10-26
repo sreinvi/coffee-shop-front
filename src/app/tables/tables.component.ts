@@ -40,4 +40,12 @@ export class TablesComponent implements OnInit {
       alert("there was an error!!!");
     });
   }
+
+  deleteTable(id: number) {
+    this.tableService.deleteTable(id).subscribe( (response:any) =>{
+      this.loadTables();
+    },(err:any)=>{
+      alert("Something went wrong")
+    });
+  }
 }

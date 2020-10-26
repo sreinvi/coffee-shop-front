@@ -28,4 +28,15 @@ export class TableService {
     const fullTablesUrl:string = this.appConfig.api_url + 'tables/update';
     return this.httpClient.put(fullTablesUrl, tablePayload);
   }
+
+  deleteTable(table_id:number)
+  {
+    let fullTablesUrl :string = this.appConfig.api_url + 'tables/delete/' + table_id;
+    return this.httpClient.delete<any>(fullTablesUrl);
+  }
+
+  newTable(tablePayload: TablePayload) {
+    const fullTablesUrl:string = this.appConfig.api_url + 'tables/create';
+    return this.httpClient.post(fullTablesUrl, tablePayload);
+  }
 }

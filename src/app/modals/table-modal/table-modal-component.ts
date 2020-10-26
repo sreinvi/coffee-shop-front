@@ -60,11 +60,11 @@ export class TableModalContent {
     }
     this.tablePayload.table_code = this.saveTableForm.get('table_code').value;
     this.tablePayload.active = this.saveTableForm.get('active').value;
-    // this.tableService.newItem(this.itemPayload).subscribe( ()=>{
-    //   window.location.reload();
-    // }, error => {
-    //   alert(error);
-    // });
+    this.tableService.newTable(this.tablePayload).subscribe( ()=>{
+      window.location.reload();
+    }, error => {
+      alert(error);
+    });
   }
 
 }

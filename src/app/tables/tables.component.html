@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row table-page-title">
     <div class="col-md-8"> <h1>Tables</h1></div>
-<!--    <div class="col-md-4"><item-modal></item-modal></div>-->
+    <div class="col-md-4" style="margin-top:4px;"><table-modal></table-modal></div>
   </div>
   <div class="row">
 
@@ -15,7 +15,7 @@
           <button style="margin-right:5px;" class="btn btn-block btn-primary" (click)="editTable(table.id)">Edit</button>
         </div>
         <div class="col-md-4">
-          <button class="btn btn-block btn-danger" >Delete</button>
+          <button class="btn btn-block btn-danger" (click)="deleteTable(table.id)">Delete</button>
         </div>
       </div>
     </div>
