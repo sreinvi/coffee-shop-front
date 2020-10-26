@@ -36,7 +36,7 @@ export class TableModalContent {
     this.tableService.getTable(id).subscribe( (response:TablesResponse) =>{
       this.tablePayload.id = response.data.id;
       this.saveTableForm.controls.table_code.setValue(response.data.table_code);
-      // this.saveItemForm.controls.price.setValue(response.data.price);
+      this.saveTableForm.controls.active.setValue(response.data.active);
     },(error:any)=>{
       alert(error);
     });
@@ -44,22 +44,22 @@ export class TableModalContent {
 
   update()
   {
-    // this.itemPayload.item = this.saveItemForm.get('item').value;
-    // this.itemPayload.price = this.saveItemForm.get('price').value;
-    // this.tableService.updateItem(this.itemPayload).subscribe( data=>{
-    //   this.activeModal.close();
-    // },error =>{
-    //   alert(error);
-    // });
+    this.tablePayload.table_code = this.saveTableForm.get('table_code').value;
+    this.tablePayload.active = this.saveTableForm.get('active').value;
+    this.tableService.updateTable(this.tablePayload).subscribe( data=>{
+      this.activeModal.close();
+    },error =>{
+      alert(error);
+    });
   }
 
   save(){
-    // if(this.itemPayload.id > 0){
-    //   this.update();
-    //   return;
-    // }
-    // this.itemPayload.item = this.saveItemForm.get('item').value;
-    // this.itemPayload.price = (this.saveItemForm.get('price').value * 100);
+    if(this.tablePayload.id > 0){
+      this.update();
+      return;
+    }
+    this.tablePayload.table_code = this.saveTableForm.get('table_code').value;
+    this.tablePayload.active = this.saveTableForm.get('active').value;
     // this.tableService.newItem(this.itemPayload).subscribe( ()=>{
     //   window.location.reload();
     // }, error => {

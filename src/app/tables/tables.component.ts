@@ -3,7 +3,6 @@ import {Router} from '@angular/router';
 import {TablePayload} from '../dto/responses/table-payload';
 import {TableService} from '../services/table.service';
 import {TableResponse} from '../dto/responses/TableResponse';
-import {ItemModalContent} from '../modals/item-modal/item-modal-component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {TableModalContent} from '../modals/table-modal/table-modal-component';
 

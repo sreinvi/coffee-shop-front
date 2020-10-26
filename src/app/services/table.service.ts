@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import {AppConfig} from '../config/app-config';
 import {HttpClient} from '@angular/common/http';
-import {PageableItemsResponse} from '../dto/responses/pageable-items-response';
 import {TableResponse} from '../dto/responses/TableResponse';
-import {ItemResponse} from '../dto/responses/ItemResponse';
 import {TablesResponse} from '../dto/responses/tables-response';
+import {TablePayload} from '../dto/responses/table-payload';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +14,18 @@ export class TableService {
 
   getTables()
   {
-    const fullItemsUrl: string = this.appConfig.api_url + 'tables/all';
-    return this.httpClient.get<TableResponse>(fullItemsUrl );
+    const fullTablesUrl: string = this.appConfig.api_url + 'tables/all';
+    return this.httpClient.get<TableResponse>(fullTablesUrl );
   }
 
   getTable(table_id:number)
   {
-    const fullItemsUrl: string = this.appConfig.api_url + 'tables/' + table_id;
-    return this.httpClient.get<TablesResponse>(fullItemsUrl);
+    const fullTablesUrl: string = this.appConfig.api_url + 'tables/' + table_id;
+    return this.httpClient.get<TablesResponse>(fullTablesUrl);
+  }
+
+  updateTable(tablePayload: TablePayload) {
+    const fullTablesUrl:string = this.appConfig.api_url + 'tables/update';
+    return this.httpClient.put(fullTablesUrl, tablePayload);
   }
 }
