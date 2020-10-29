@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {OrdersService} from '../services/orders.service';
+import {OrderPayload} from '../dto/responses/order-payload';
 
 @Component({
   selector: 'app-orders',
@@ -8,6 +9,8 @@ import {OrdersService} from '../services/orders.service';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
+
+  orders:Array<OrderPayload>
 
   constructor(
     private router: Router,
@@ -23,7 +26,8 @@ export class OrdersComponent implements OnInit {
   loadOrders(table_id:number)
   {
     this.ordersService.getUnpaidTableOrders(table_id).subscribe( (response: any) => {
-      console.dir(response);
+      this.orders = response.data;
+      console.dir(this.orders);
     });
   }
 
