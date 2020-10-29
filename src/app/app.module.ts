@@ -12,6 +12,7 @@ import {JsonAppConfigService} from './config/json-app-config.service';
 import { AppConfig } from './config/app-config';
 import { TablesComponent } from './tables/tables.component';
 import {TableModalComponent, TableModalContent} from './modals/table-modal/table-modal-component';
+import { OrdersComponent } from './orders/orders.component';
 
 export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
   return () => {
@@ -29,6 +30,7 @@ export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
     TablesComponent,
     TableModalComponent,
     TableModalContent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,7 @@ export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
     RouterModule.forRoot([
       {path: 'items', component: ItemsComponent},
       {path: 'tables', component: TablesComponent},
+      {path: 'orders/:table_id', component: OrdersComponent},
     ]),
     ReactiveFormsModule,
   ],
