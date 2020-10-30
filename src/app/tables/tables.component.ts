@@ -48,4 +48,8 @@ export class TablesComponent implements OnInit {
       alert("Something went wrong")
     });
   }
+
+  openOrder(id: number) {
+    window.open("table_orders/" + id);
+  }
 }

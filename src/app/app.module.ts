@@ -39,7 +39,7 @@ export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
     RouterModule.forRoot([
       {path: 'items', component: ItemsComponent},
       {path: 'tables', component: TablesComponent},
-      {path: 'orders/:table_id', component: OrdersComponent},
+      {path: 'table_orders/:table_id', component: OrdersComponent},
     ]),
     ReactiveFormsModule,
   ],

@@ -9,7 +9,7 @@
       <h1>{{ (table.table_code == null)?"N/A":table.table_code }}</h1>
       <div class="row" style="padding-top:5px;">
         <div class="col-md-4">
-          <button style="margin-right:5px;" class="btn btn-block btn-primary" >Order</button>
+          <button style="margin-right:5px;" class="btn btn-block btn-primary" (click)="openOrder(table.id)">Order</button>
         </div>
         <div class="col-md-4">
           <button style="margin-right:5px;" class="btn btn-block btn-primary" (click)="editTable(table.id)">Edit</button>
