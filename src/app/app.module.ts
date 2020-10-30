@@ -13,6 +13,7 @@ import { AppConfig } from './config/app-config';
 import { TablesComponent } from './tables/tables.component';
 import {TableModalComponent, TableModalContent} from './modals/table-modal/table-modal-component';
 import { OrdersComponent } from './orders/orders.component';
+import {OrderModalComponent, OrderModalContent} from './modals/order-modal/order-modal-component';
 
 export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
   return () => {
@@ -30,6 +31,8 @@ export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
     TablesComponent,
     TableModalComponent,
     TableModalContent,
+    OrderModalComponent,
+    OrderModalContent,
     OrdersComponent,
   ],
   imports: [
