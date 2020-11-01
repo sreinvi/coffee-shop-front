@@ -6,4 +6,5 @@ export class OrderPayload{
   table_id:number;
   delivered:boolean;
   payed:boolean;
+  item_id:number;
 }

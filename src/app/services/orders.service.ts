@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {AppConfig} from '../config/app-config';
 import {HttpClient} from '@angular/common/http';
+import {OrderPayload} from '../dto/responses/order-payload';
+import {NewOrderRequest} from '../dto/responses/NewOrderRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,12 @@ export class OrdersService {
 
   getDefaultValues()
   {
-    const fullOrdersUrl: string = this.appConfig.api_url + 'orders/load_default';
-    return this.httpClient.get<any>(fullOrdersUrl);
+    const fullOrdersDefaultValuesUrl: string = this.appConfig.api_url + 'orders/load_default';
+    return this.httpClient.get<any>(fullOrdersDefaultValuesUrl);
+  }
+
+  newOrder(created_orders: NewOrderRequest) {
+    const fullCreateOrdersUrl: string = this.appConfig.api_url + 'orders/create';
+    return this.httpClient.post(fullCreateOrdersUrl,created_orders);
   }
 }

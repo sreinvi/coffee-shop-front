@@ -48,5 +48,6 @@ export class OrdersComponent implements OnInit {
   addOrder() {
     const activeModal = this.modalService.open(OrderModalContent)
     activeModal.componentInstance.loadData(0);
+    activeModal.componentInstance.table_id = this.route.snapshot.paramMap.get('table_id');
   }
 }
