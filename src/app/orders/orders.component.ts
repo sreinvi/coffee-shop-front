@@ -6,6 +6,7 @@ import {OrdersResponse} from '../dto/responses/OrdersResponse';
 import {OrderModalComponent, OrderModalContent} from '../modals/order-modal/order-modal-component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {TableModalContent} from '../modals/table-modal/table-modal-component';
+import {NewOrderRequest} from '../dto/responses/NewOrderRequest';
 
 @Component({
   selector: 'app-orders',
@@ -38,11 +39,21 @@ export class OrdersComponent implements OnInit {
   }
 
   payOrder(id: number) {
+    this.ordersService.payOrder(id).subscribe( ()=>{
+      this.loadOrders(+this.route.snapshot.paramMap.get('table_id'))
+    }, error => {
 
+      alert(error);
+    });
   }
 
   deliverOrder(id: number) {
+    this.ordersService.deliverOrder(id).subscribe( ()=>{
+      this.loadOrders(+this.route.snapshot.paramMap.get('table_id'))
+    }, error => {
 
+      alert(error);
+    });
   }
 
   addOrder() {

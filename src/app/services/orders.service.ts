@@ -27,4 +27,19 @@ export class OrdersService {
     const fullCreateOrdersUrl: string = this.appConfig.api_url + 'orders/create';
     return this.httpClient.post(fullCreateOrdersUrl,created_orders);
   }
+
+  updateOrder(updated_orders: NewOrderRequest) {
+    const fullUpdateOrdersUrl: string = this.appConfig.api_url + 'orders/update';
+    return this.httpClient.put(fullUpdateOrdersUrl,updated_orders);
+  }
+
+  payOrder(order_id:number) {
+    const fullUpdateOrdersUrl: string = this.appConfig.api_url + 'orders/pay/' + order_id;
+    return this.httpClient.put(fullUpdateOrdersUrl,null);
+  }
+
+  deliverOrder(order_id: number) {
+    const fullUpdateOrdersUrl: string = this.appConfig.api_url + 'orders/deliver/' + order_id;
+    return this.httpClient.put(fullUpdateOrdersUrl,null);
+  }
 }

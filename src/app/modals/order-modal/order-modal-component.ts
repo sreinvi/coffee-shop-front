@@ -16,20 +16,17 @@ export class OrderModalContent {
   orderDefaultValues: OrderDefaultValuesResponse;
   saveOrderForm: FormGroup;
   select_item = new FormControl('');
-  // active = new FormControl('');
-  //
 
   constructor(public activeModal: NgbActiveModal, private router: Router, private ordersService: OrdersService)
   {
     this.saveOrderForm = new FormGroup({
       select_item: this.select_item,
     });
-    //
     this.orderDefaultValues = {
       items:null
     }
   }
-  //
+
   loadData(id:number)
   {
     this.loadDefault();
@@ -54,7 +51,7 @@ export class OrderModalContent {
     this.ordersService.newOrder(newOrders).subscribe( ()=>{
       window.location.reload();
     }, error => {
-      console.log(error);
+
       alert(error);
     });
   }
