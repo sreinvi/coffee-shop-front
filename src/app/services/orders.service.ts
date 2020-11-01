@@ -14,4 +14,10 @@ export class OrdersService {
     const fullOrdersUrl: string = this.appConfig.api_url + 'orders/table_unpaid/' + table_id;
     return this.httpClient.get<any>(fullOrdersUrl);
   }
+
+  getDefaultValues()
+  {
+    const fullOrdersUrl: string = this.appConfig.api_url + 'orders/load_default';
+    return this.httpClient.get<any>(fullOrdersUrl);
+  }
 }

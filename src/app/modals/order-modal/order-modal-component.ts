@@ -2,27 +2,26 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup} from '@angular/forms';
-import {TableService} from '../../services/table.service';
-import {TablePayload} from '../../dto/responses/table-payload';
-import {TablesResponse} from '../../dto/responses/tables-response';
+import {OrdersService} from '../../services/orders.service';
+import {OrderDefaultValuesResponse} from '../../dto/responses/order-default-values-response';
 
 @Component({
   selector: 'order-modal-content',
   templateUrl: './order-modal-content.html'
 })
 export class OrderModalContent {
-
-  // tablePayload: TablePayload;
-  // saveTableForm: FormGroup;
-  // table_code = new FormControl('');
+  editRecID:number = 0;
+  orderDefaultValues: OrderDefaultValuesResponse;
+  saveOrderForm: FormGroup;
+  select_item = new FormControl('');
   // active = new FormControl('');
   //
-  constructor(public activeModal: NgbActiveModal, private router: Router, private tableService: TableService)
+
+  constructor(public activeModal: NgbActiveModal, private router: Router, private ordersService: OrdersService)
   {
-    // this.saveTableForm = new FormGroup({
-    //   table_code: this.table_code,
-    //   active: this.active
-    // });
+    this.saveOrderForm = new FormGroup({
+      select_item: this.select_item,
+    });
     //
     // this.tablePayload = {
     //   id: null,
@@ -31,16 +30,10 @@ export class OrderModalContent {
     // }
   }
   //
-  // loadData(id:number)
-  // {
-  //   this.tableService.getTable(id).subscribe( (response:TablesResponse) =>{
-  //     this.tablePayload.id = response.data.id;
-  //     this.saveTableForm.controls.table_code.setValue(response.data.table_code);
-  //     this.saveTableForm.controls.active.setValue(response.data.active);
-  //   },(error:any)=>{
-  //     alert(error);
-  //   });
-  // }
+  loadData(id:number)
+  {
+    this.loadDefault();
+  }
   //
   // update()
   // {
@@ -53,19 +46,28 @@ export class OrderModalContent {
   //   });
   // }
   //
-  // save(){
-  //   if(this.tablePayload.id > 0){
-  //     this.update();
-  //     return;
-  //   }
-  //   this.tablePayload.table_code = this.saveTableForm.get('table_code').value;
-  //   this.tablePayload.active = this.saveTableForm.get('active').value;
-  //   this.tableService.newTable(this.tablePayload).subscribe( ()=>{
-  //     window.location.reload();
-  //   }, error => {
-  //     alert(error);
-  //   });
-  // }
+  loadDefault()
+  {
+    this.ordersService.getDefaultValues().subscribe( response => {
+      this.orderDefaultValues = response.data;
+    },error =>{
+      alert(error);
+    })
+  }
+  save(){
+    console.log(this.select_item.value)
+    // if(this.tablePayload.id > 0){
+    //   this.update();
+    //   return;
+    // }
+    // this.tablePayload.table_code = this.saveTableForm.get('table_code').value;
+    // this.tablePayload.active = this.saveTableForm.get('active').value;
+    // this.tableService.newTable(this.tablePayload).subscribe( ()=>{
+    //   window.location.reload();
+    // }, error => {
+    //   alert(error);
+    // });
+  }
 
 }
 

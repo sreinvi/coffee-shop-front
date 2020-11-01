@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row orders-page-title">
     <div class="col-md-8"> <h1>Orders</h1></div>
-    <div class="col-md-4"><button class="btn btn-block btn-primary">New Order</button></div>
+    <div class="col-md-4"><button class="btn btn-block btn-primary" (click)="addOrder()">New Order</button></div>
   </div>
   <div class="row">
     <div class="card col-md-12 card-attributes" *ngFor="let order of orders">

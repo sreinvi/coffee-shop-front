@@ -1,19 +1,19 @@
-<!--<div class="modal-header">-->
-<!--  <h5 class="modal-title">Table</h5>-->
-<!--  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">-->
-<!--    <span aria-hidden="true">&times;</span>-->
-<!--  </button>-->
-<!--</div>-->
-<!--<div class="modal-body">-->
+<div class="modal-header">
+  <h5 class="modal-title">Order</h5>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
 
-<!--  <form [formGroup]="saveTableForm" >-->
-<!--    <div class="form-group">-->
-<!--      <div>-->
-<!--        <label>-->
-<!--          <b>Table Code:</b>-->
-<!--          <input type="text" class="form-control" [formControlName]="'table_code'" >-->
-<!--        </label>-->
-<!--      </div>-->
+  <form [formGroup]="saveOrderForm" >
+    <div class="form-group">
+      <div>
+        <label>Select Item</label>
+        <select class="browser-default custom-select" [formControlName]="'select_item'">
+          <option *ngFor="let item of orderDefaultValues.items" value="{{ item.id}}">{{ item.item }} price: {{ item.price / 100}}</option>
+        </select>
+      </div>
 
 <!--      <div>-->
 <!--        <label>-->
@@ -22,10 +22,10 @@
 <!--        <input style="margin-left: 5px;" type="checkbox" [formControlName]="'active'">-->
 <!--      </div>-->
 
-<!--    </div>-->
-<!--  </form>-->
+    </div>
+  </form>
 
-<!--</div>-->
-<!--<div class="modal-footer">-->
-<!--  <button type="button" class="btn btn-outline-dark" (click)="save()">Save</button>-->
-<!--</div>-->
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="save()">Save</button>
+</div>
