@@ -40,6 +40,7 @@ export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
     HttpClientModule,
     NgbModule,
     RouterModule.forRoot([
+      { path:'', redirectTo:'tables', pathMatch:'full' },
       {path: 'items', component: ItemsComponent},
       {path: 'tables', component: TablesComponent},
       {path: 'table_orders/:table_id', component: OrdersComponent},
